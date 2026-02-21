@@ -20,6 +20,7 @@ Master index of all project knowledge organized by domain.
 - [[01-Project/vision|Vision]] — Product concept, features, target user, constraints
 - [[01-Project/requirements|Requirements]] — Functional & non-functional requirements
 - [[01-Project/architecture|Architecture]] — System design, data flow, interfaces
+- [[01-Project/hardware-design-spec|Hardware Design Spec]] — Complete dimensional, material, and geometry reference for AI renders and exploded views
 
 ## Hardware Domain
 

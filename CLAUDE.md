@@ -55,10 +55,11 @@ The `docs/` directory is an Obsidian vault. Open it in Obsidian for best navigat
 
 ### Entry Points
 - **`docs/Home.md`** — Vault home page with navigation to all sections
-- **`docs/01-Project/3d-pen-MOC.md`** — Master Map of Content linking all 48+ notes
+- **`docs/01-Project/3d-pen-MOC.md`** — Master Map of Content linking all 50+ notes
 - **`docs/01-Project/vision.md`** — Structured product vision
 - **`docs/01-Project/requirements.md`** — Functional & non-functional requirements
 - **`docs/01-Project/architecture.md`** — System architecture with data flow and interfaces
+- **`docs/01-Project/hardware-design-spec.md`** — Complete hardware geometry, materials, and dimensions for AI renders/CAD
 
 ### Vault Structure
 ```
@@ -133,6 +134,16 @@ Pre-distilled knowledge from completed research. Load the relevant bundle before
 - **Host receiver**: HIDAPI library for USB dongle communication; Tauri (Rust backend) for host app
 - **Canvas**: Pointer Events API (cross-platform); Catmull-Rom→Bezier for smooth strokes; pressure curve mapping (gamma/S-curve)
 - **Reference**: OpenTabletDriver (cross-platform architecture, daemon/GUI split, platform-specific output modules)
+
+### Hardware Design Quick Reference (for renders/CAD)
+- **Full spec**: `docs/01-Project/hardware-design-spec.md` — 13-section comprehensive reference
+- **Overall**: 150mm L x 11.5mm OD, 6.0mm bore, 2.75mm annular gap, 20-28g
+- **12 parts (nib→cap)**: Nib cone (POM black), nib thread (POM black, M10x0.75), O-ring (silicone), refill (6mm), inner shell (POM cream, 7mm OD), flex PCB (amber polyimide, 230x10mm flat, helical wrap), stiffeners (x5 PI), battery (10180, silver), TPE grip (35mm, dark gray), 2x outer shell halves (PC matte black), end cap (PC/Al)
+- **6 axial zones**: N=nib(0-15mm), A=pressure+IMU1(15-55mm), B=touch+wake(55-80mm), C=MCU+radio(80-110mm), D=power+IMU2(110-135mm), E=cap+Qi coil(135-150mm)
+- **Key components on flex PCB**: 2x ICM-42688-P (0.91mm), nRF52840 QFN48 (6x6x0.85mm), IQS263 (2x2x0.75mm), ADXL367 (2.2x2.3x0.87mm), BQ51003 (4x4x0.8mm), BQ25100, MAX17048, FSR 400 Short (0.3mm), PCB IFA antenna
+- **Shell**: 2-half split (longitudinal), ultrasonic weld or screw; PC (14-22g) or Al 6061 (19-32g)
+- **Colorways**: Stealth Black (matte black PC, RAL 9005), Silver Studio (anodized Al), Translucent Tech (smoke PC)
+- **Charging cradle**: 40mm dia x 40mm tall disc, 12mm bore, Qi TX pad at base, USB-C power
 
 ### Cross-Domain Interfaces (TBD — integration-agent will fill)
 - Sensor → MCU: ADC channels, SPI/I2C bus, voltage levels, sampling sequence
