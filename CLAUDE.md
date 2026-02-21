@@ -92,3 +92,61 @@ docs/
 - Research notes follow `docs/08-Templates/_research-note.md` template
 - Commits use format: `docs({domain}): {description}`
 - Cross-domain conflicts go to `docs/06-Decisions/` as decision log entries
+
+## Context Bundles (for agents)
+
+Pre-distilled knowledge from completed research. Load the relevant bundle before working on a domain task.
+
+### Hardware Context
+- **Pen geometry**: 150mm x 11mm outer, 110mm x 6mm refill, 2.5mm annular gap for all electronics
+- **Flex PCB**: 2-layer pure flex (polyimide) + stiffeners, helical wrap, rolled annealed copper, R ≥ 6×T bend radius, JLCPCB/PCBWay can manufacture
+- **IMU**: TDK ICM-42688-P (2.5x3.0x0.91mm, 32kHz max ODR, SPI/I2C) — 2 units, one each end
+- **Pressure**: Interlink FSR 400 Short (0.3mm thick, 5.6mm active area) for prototyping; PVDF piezo film for production; also consider GaPO4 crystals (Piezocryst T-Series, 3.5mm, 170kHz)
+- **Touch**: Azoteq IQS263 (2x2x0.75mm DFN, built-in slider, proximity detection)
+- **Charging**: TI BQ51003 Qi receiver + BQ25100 charger; also investigate Renesas WattUp RF option
+- **Battery**: 10180 cylindrical Li-ion (10mm x 18mm, 70-100mAh)
+- **Component height budget**: PCB+components ≤ 1.17mm leaves 1.33mm margin in 2.5mm gap
+- **Shell**: Consider 11.5-12mm OD (11mm flagged as extremely tight); PC or ABS, 14-22g target weight
+- **Prior art**: STABILO DigiPen (5 sensors, commercial), D-POINT (ArUco+IMU, open-source), Pen-Digitizer (ESP32+BLE, had drift/latency issues)
+
+### Embedded Context
+- **MCU**: nRF52840 (QFN48, 6x6mm, ARM Cortex-M4F, 256KB RAM, 1MB flash, integrated 2.4GHz radio, 200ksps 12-bit ADC with DMA)
+- **Wireless**: Nordic ESB at 2Mbps (primary, ~500µs latency); BLE secondary for config/DFU. Throughput math: 6ch × 8kHz × 16-bit = 768kbps raw, ~920kbps with overhead — ESB at 2Mbps gives 2x margin
+- **Firmware**: Zephyr RTOS via nRF Connect SDK; DMA-driven ADC, cooperative threads, double-buffered ring buffers; 150-200KB flash footprint
+- **Power**: ~5.8mA active (optimistic), ~10mA (pessimistic); 100mAh cell → 8-14+ hours; MAX17048 fuel gauge; 3-state power management (Active/Idle/Deep Sleep)
+- **Motion Sync**: Synchronize sensor sampling with wireless TX window to reduce deterministic delay to 0.0625ms at 8kHz
+- **Key repos**: nRF52_Mesh (ESB reference), embedded-debugger-mcp (agent debugging via probe-rs), mcp-gdb (GDB agent integration)
+
+### ML Context
+- **Architecture**: Mixture-of-Experts — Touching Expert (TCN, 2D stroke mapping) + Hovering Expert (3D positioning, drift correction); Reset Switch via LDA for static state detection
+- **Key papers**: MoE trajectory (Imbert, 2025), ECHWR contrastive learning (Li, 2025), REWI CNN+BiLSTM (Li, iWOAR 2025)
+- **Key repos**: REWI (writer-independent recognition), IMU2Text (CNN+GNN, 99.74%), imu_mnist (simple baseline)
+- **Dataset**: OnHW (STABILO, 14 IMU channels, 100Hz, 31K chars, 119 writers) — most relevant existing dataset
+- **Training**: DTW for sensor-scan alignment; writer-based train/val/test splits; augmentation: jitter, rotation, time warp, channel dropout
+- **Inference**: RT-TCN for O(1) streaming; ONNX Runtime on desktop; target <10ms latency; 5ms windowed inference (40 samples at 8kHz)
+- **Framework**: PyTorch (ADOPT), DVC for data versioning, W&B for experiment tracking
+
+### Software Context
+- **HID**: Usage Page 0x0D (Digitizers), Usage 0x02 (Pen); 12-byte report: X, Y, pressure, tilt X/Y, tip switch, barrel button, in-range, eraser
+- **Haptic Pen**: Windows supports WAVEFORM_CLICK, WAVEFORM_INKCONTINUOUS via HID haptic collection (Usage Page 0x0E)
+- **Virtual HID per OS**: Linux: uhid/uinput + `BTN_TOOL_PEN` + `INPUT_PROP_DIRECT`; Windows: VHF (KMDF) or vhidmini2 (UMDF); macOS: IOHIDUserDevice + proximity events
+- **Host receiver**: HIDAPI library for USB dongle communication; Tauri (Rust backend) for host app
+- **Canvas**: Pointer Events API (cross-platform); Catmull-Rom→Bezier for smooth strokes; pressure curve mapping (gamma/S-curve)
+- **Reference**: OpenTabletDriver (cross-platform architecture, daemon/GUI split, platform-specific output modules)
+
+### Cross-Domain Interfaces (TBD — integration-agent will fill)
+- Sensor → MCU: ADC channels, SPI/I2C bus, voltage levels, sampling sequence
+- MCU → Wireless: ESB packet format (header + 6ch×16-bit payload + checksum)
+- Wireless → Host: USB HID or vendor-specific on receiver dongle
+- Host → ML: Input tensor shape, channel order, normalization
+- ML → Virtual HID: Output (x, y, pressure, tilt_x, tilt_y), coordinate range
+- Virtual HID → OS: HID report descriptor, report rate
+
+## Conversation History
+
+Raw research conversations from Gemini and ChatGPT are preserved in `docs/00-Inbox/`:
+- `gemini-thinking-raw.md`, `gemini-report-raw.md` — Gemini deep research with URLs and analysis
+- `chatgpt-thinking-raw.md`, `chatgpt-report-raw.md` — ChatGPT research plan with citations
+- `ideation-v0.0-raw.md` — Original project ideation
+
+These have been processed into vault notes. The curated reference library is at `docs/07-References/papers/curated-references.md`.

@@ -27,6 +27,9 @@ Master index of all project knowledge organized by domain.
 - [[02-Research/hardware/sensor-selection|Sensor Selection]] — Piezo pressure, MEMS IMU, capacitive touch ICs
 - [[02-Research/hardware/wireless-charging|Wireless Charging]] — Qi on flex PCB, coil geometry, charging ICs
 - [[02-Research/hardware/mechanical-design|Mechanical Design]] — Pen shell, nib thread, refill compatibility, thermal
+- [[02-Research/hardware/prior-art-smart-pens|Prior Art Smart Pens]] — STABILO, D-POINT, Pen-Digitizer, Livescribe, Neo Smartpen
+- [[02-Research/hardware/manufacturing-pune|Manufacturing — Pune]] — Local PCB/PCBA fabrication ecosystem
+- [[02-Research/hardware/advanced-sensor-options|Advanced Sensor Options]] — GaPO4 piezo, ADXL367, WattUp RF charging, Motion Sync
 
 ## Embedded Domain
 
@@ -34,6 +37,7 @@ Master index of all project knowledge organized by domain.
 - [[02-Research/embedded/wireless-protocols|Wireless Protocols]] — BLE 5.x, Nordic ESB, custom 2.4GHz analysis
 - [[02-Research/embedded/firmware-architecture|Firmware Architecture]] — RTOS vs bare-metal, DMA-driven ADC, interrupt design
 - [[02-Research/embedded/power-management|Power Management]] — Battery, power budget, sleep modes, charging firmware
+- [[02-Research/embedded/open-source-firmware|Open-Source Firmware & MCP Tools]] — nRF52_Mesh, embedded-debugger-mcp, mcp-gdb, gaming mouse firmware
 
 ## ML Domain
 
@@ -41,6 +45,7 @@ Master index of all project knowledge organized by domain.
 - [[02-Research/ml/handwriting-recognition|Handwriting Recognition]] — Online recognition from stroke data, recurrent models
 - [[02-Research/ml/training-pipeline|Training Pipeline]] — Data collection, ground truth alignment, augmentation
 - [[02-Research/ml/realtime-inference|Real-Time Inference]] — Streaming architectures, latency optimization, deployment
+- [[02-Research/ml/open-source-implementations|Open-Source ML Implementations]] — REWI, IMU2Text, imu_mnist, D-POINT, OnHW dataset
 
 ## Software Domain
 
@@ -48,6 +53,7 @@ Master index of all project knowledge organized by domain.
 - [[02-Research/software/device-drivers|Device Drivers]] — Windows/macOS/Linux virtual HID creation
 - [[02-Research/software/canvas-rendering|Canvas Rendering]] — Digital ink, pressure curves, Bezier fitting
 - [[02-Research/software/os-input-registration|OS Input Registration]] — Virtual input devices, cross-platform abstraction
+- [[02-Research/software/haptic-pen-hid|Haptic Pen HID]] — Microsoft Haptic Pen spec, waveforms, haptic feedback via HID
 
 ## Tools & Evaluations
 
@@ -76,6 +82,18 @@ Master index of all project knowledge organized by domain.
 - [[05-Plans/phase-2-design|Phase 2: Design]] — Schematic, mechanical, firmware, ML, software
 - [[05-Plans/phase-3-prototype|Phase 3: Prototype]] — PCB fab, components, firmware MVP, data collection
 - [[05-Plans/automation-strategy|Automation Strategy]] — Vault validation, CI, agent workflows
+
+## References
+
+- [[07-References/papers/curated-references|Curated Reference Library]] — All papers, repos, datasheets, manufacturers, patents
+
+## Raw Conversations (Inbox)
+
+- [[00-Inbox/gemini-thinking-raw|Gemini Thinking]] — Deep research with web sources
+- [[00-Inbox/gemini-report-raw|Gemini Report]] — Structured analysis and synthesis
+- [[00-Inbox/chatgpt-thinking-raw|ChatGPT Thinking]] — Research exploration process
+- [[00-Inbox/chatgpt-report-raw|ChatGPT Report]] — Comprehensive research plan
+- [[00-Inbox/ideation-v0.0-raw|Original Ideation]] — Raw project idea
 
 ## Decisions
 
