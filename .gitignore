@@ -1,8 +1,11 @@
 # Obsidian workspace (user-specific)
-.obsidian/workspace.json
-.obsidian/workspace-mobile.json
-.obsidian/hotkeys.json
-.obsidian/appearance.json
+docs/.obsidian/workspace.json
+docs/.obsidian/workspace-mobile.json
+docs/.obsidian/hotkeys.json
+docs/.obsidian/appearance.json
+docs/.obsidian/graph.json
+docs/.obsidian/core-plugins.json
+docs/.obsidian/core-plugins-migration.json
 
 # OS files
 .DS_Store

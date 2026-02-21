@@ -76,6 +76,7 @@ Master index of all project knowledge organized by domain.
 - [[03-SOPs/sop-integration-agent|SOP-0008: Integration Agent]]
 - [[03-SOPs/sop-review-agent|SOP-0009: Review Agent]]
 - [[03-SOPs/sop-documentation-agent|SOP-0010: Documentation Agent]]
+- [[03-SOPs/sop-github-workflow|SOP-0011: GitHub Workflow]]
 
 ## Plans
 
