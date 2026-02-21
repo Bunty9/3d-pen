@@ -10,9 +10,7 @@ This is a multi-disciplinary project spanning hardware design, embedded firmware
 
 ## Project Status
 
-Early ideation phase. No code or firmware exists yet. The repository currently contains:
-- `docs/ideation/v0.0.md` — Full product vision, feature list, and hardware constraints
-- `docs/assets/images/` — Hand-drawn sketches of pen internals and flex PCB layout
+Research phase complete. The repository contains an Obsidian vault knowledge base with 48+ documents covering all domains. No code or firmware exists yet — the vault is the foundation for all future design and development work.
 
 ## Architecture (Planned Domains)
 
@@ -50,3 +48,47 @@ Early ideation phase. No code or firmware exists yet. The repository currently c
 - Wireless data must match sensor resolution with minimal latency (target ~8 kHz polling)
 - Power budget is extremely tight — everything must be low-energy (MCU, comms, haptics, sensors)
 - Flex PCB geometry must be designed so components land in correct positions when helically wrapped
+
+## Obsidian Vault Knowledge Base
+
+The `docs/` directory is an Obsidian vault. Open it in Obsidian for best navigation.
+
+### Entry Points
+- **`docs/Home.md`** — Vault home page with navigation to all sections
+- **`docs/01-Project/3d-pen-MOC.md`** — Master Map of Content linking all 48+ notes
+- **`docs/01-Project/vision.md`** — Structured product vision
+- **`docs/01-Project/requirements.md`** — Functional & non-functional requirements
+- **`docs/01-Project/architecture.md`** — System architecture with data flow and interfaces
+
+### Vault Structure
+```
+docs/
+├── Home.md                    # Vault entry point
+├── 00-Inbox/                  # Raw/unprocessed notes
+├── 01-Project/                # Vision, requirements, architecture, MOC
+├── 02-Research/               # Domain research notes
+│   ├── hardware/              # Flex PCB, sensors, charging, mechanical
+│   ├── embedded/              # MCU, wireless, firmware, power
+│   ├── ml/                    # Sensor fusion, training, inference
+│   └── software/              # HID, drivers, canvas, OS integration
+├── 03-SOPs/                   # 10 standard operating procedures
+├── 04-Tools/                  # Tool evaluations (5 documents)
+├── 05-Plans/                  # Phase plans and automation strategy
+├── 06-Decisions/              # Architecture decision records
+├── 07-References/             # Datasheets, papers
+├── 08-Templates/              # 5 note templates
+└── 09-Assets/images/          # Sketches, diagrams
+```
+
+### SOP Reading Order (for agents)
+1. `docs/03-SOPs/sop-vault-contribution.md` — **Read first.** Frontmatter schema, naming, linking rules.
+2. `docs/03-SOPs/sop-multi-agent-orchestration.md` — Agent roster, write scopes, handoff protocol.
+3. `docs/03-SOPs/sop-research-agent.md` — Research methodology, citation format.
+4. Domain-specific SOP (one of: `sop-hardware-agent.md`, `sop-embedded-agent.md`, `sop-ml-agent.md`, `sop-software-agent.md`)
+
+### Agent Workflow Reference
+- Each domain agent has an **exclusive write scope** (see SOP-0002 for roster table)
+- All vault notes must have **YAML frontmatter** (see SOP-0001 for schema)
+- Research notes follow `docs/08-Templates/_research-note.md` template
+- Commits use format: `docs({domain}): {description}`
+- Cross-domain conflicts go to `docs/06-Decisions/` as decision log entries
