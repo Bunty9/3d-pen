@@ -52,3 +52,6 @@ npm-debug.log*
 
 # Logs
 *.log
+
+# Raw conversation exports (already processed into vault)
+docs/conversations/

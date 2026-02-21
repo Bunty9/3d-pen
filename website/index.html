@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Pen — Write on paper. See it digitally.</title>
+  <meta name="description" content="A smart pen that streams real-time sensor data to a host, where deep learning translates your writing into digital strokes. Open source hardware project.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="3D Pen — Write on paper. See it digitally.">
+  <meta property="og:description" content="A smart pen with pressure, IMU, and touch sensors that streams data wirelessly to a host for ML-powered digital stroke reconstruction.">
+  <meta property="og:image" content="../docs/09-Assets/images/ai-renders/ChatGPT Image Feb 21, 2026, 01_06_18 PM.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bunty9.github.io/3d-pen/">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="3D Pen — Write on paper. See it digitally.">
+  <meta name="twitter:description" content="Open source smart pen: sensors + ML = digital strokes from real writing.">
+  <meta name="twitter:image" content="../docs/09-Assets/images/ai-renders/ChatGPT Image Feb 21, 2026, 01_06_18 PM.png">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav__container">
+      <a href="#hero" class="nav__logo">3D Pen</a>
+      <button class="nav__toggle" id="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#hardware">Hardware</a></li>
+        <li><a href="#specs">Specs</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#roadmap">Roadmap</a></li>
+        <li><a href="#support">Support</a></li>
+        <li><a href="https://github.com/bunty9/3d-pen" class="nav__cta" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <div class="hero__content reveal">
+      <h1 class="hero__title">Write on paper.<br><span class="accent">See it digitally.</span></h1>
+      <p class="hero__subtitle">A smart pen that streams real-time sensor data to a host, where deep learning translates your physical writing into digital strokes on any canvas app.</p>
+      <div class="hero__ctas">
+        <a href="https://github.com/bunty9/3d-pen" class="btn btn--primary" target="_blank" rel="noopener">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          View on GitHub
+        </a>
+        <a href="https://patreon.com/bunty9" class="btn btn--secondary" target="_blank" rel="noopener">Support on Patreon</a>
+      </div>
+    </div>
+    <div class="hero__image reveal">
+      <img src="../docs/09-Assets/images/ai-renders/ChatGPT Image Feb 21, 2026, 01_06_18 PM.png" alt="3D Pen concept render showing the smart pen design" loading="eager">
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section section--alt" id="how-it-works">
+    <div class="container">
+      <h2 class="section__title reveal">How It Works</h2>
+      <p class="section__subtitle reveal">No computation on the pen. All intelligence lives on the host.</p>
+      <div class="steps reveal">
+        <div class="step">
+          <div class="step__number">1</div>
+          <h3 class="step__title">Write</h3>
+          <p class="step__desc">Use the 3D Pen like any normal gel pen. Write, draw, or sketch on real paper.</p>
+        </div>
+        <div class="step__arrow">&rarr;</div>
+        <div class="step">
+          <div class="step__number">2</div>
+          <h3 class="step__title">Sensors Stream</h3>
+          <p class="step__desc">Pressure, dual IMUs, and capacitive touch sensors stream data at 8kHz wirelessly.</p>
+        </div>
+        <div class="step__arrow">&rarr;</div>
+        <div class="step">
+          <div class="step__number">3</div>
+          <h3 class="step__title">ML Inference</h3>
+          <p class="step__desc">A deep learning model on the host translates raw sensor streams into 2D stroke coordinates in real time.</p>
+        </div>
+        <div class="step__arrow">&rarr;</div>
+        <div class="step">
+          <div class="step__number">4</div>
+          <h3 class="step__title">Digital Output</h3>
+          <p class="step__desc">The pen registers as an OS-level input device. Your strokes appear in any canvas app.</p>
+        </div>
+      </div>
+      <div class="steps__image reveal">
+        <img src="../docs/09-Assets/images/ai-renders/Gemini_Generated_Image_8lfxts8lfxts8lfx.png" alt="4-panel lifestyle view showing the 3D Pen in different use scenarios" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- Hardware -->
+  <section class="section" id="hardware">
+    <div class="container">
+      <h2 class="section__title reveal">Hardware</h2>
+      <p class="section__subtitle reveal">All electronics fit in a 2.75mm annular gap between the refill and the outer shell.</p>
+
+      <div class="hardware__hero reveal">
+        <img src="../docs/09-Assets/images/ai-renders/Gemini_Generated_Image_4f43gf4f43gf4f43.png" alt="Translucent X-ray view of the 3D Pen showing internal components" loading="lazy">
+      </div>
+
+      <div class="zones reveal">
+        <div class="zone">
+          <div class="zone__label">Zone N</div>
+          <h3 class="zone__title">Nib Section</h3>
+          <p class="zone__range">0 &ndash; 15mm</p>
+          <p>Removable threaded nib (M10x0.75) in black POM. Unscrews to insert standard gel refills.</p>
+        </div>
+        <div class="zone">
+          <div class="zone__label">Zone A</div>
+          <h3 class="zone__title">Pressure + IMU</h3>
+          <p class="zone__range">15 &ndash; 55mm</p>
+          <p>FSR 400 Short pressure sensor (40mm zone) plus IMU #1 (ICM-42688-P) for nib-end motion tracking.</p>
+        </div>
+        <div class="zone">
+          <div class="zone__label">Zone B</div>
+          <h3 class="zone__title">Touch + Wake</h3>
+          <p class="zone__range">55 &ndash; 80mm</p>
+          <p>Azoteq IQS263 capacitive touch slider with 4 electrode pads. ADXL367 wake controller for power management.</p>
+        </div>
+        <div class="zone">
+          <div class="zone__label">Zone C</div>
+          <h3 class="zone__title">MCU + Radio</h3>
+          <p class="zone__range">80 &ndash; 110mm</p>
+          <p>nRF52840 (ARM Cortex-M4F) with integrated 2.4GHz radio. PCB IFA antenna for wireless streaming.</p>
+        </div>
+        <div class="zone">
+          <div class="zone__label">Zone D</div>
+          <h3 class="zone__title">Power Management</h3>
+          <p class="zone__range">110 &ndash; 135mm</p>
+          <p>10180 Li-ion battery (100mAh), BQ51003 Qi receiver, BQ25100 charger, MAX17048 fuel gauge, IMU #2.</p>
+        </div>
+        <div class="zone">
+          <div class="zone__label">Zone E</div>
+          <h3 class="zone__title">End Cap + Charging</h3>
+          <p class="zone__range">135 &ndash; 150mm</p>
+          <p>Sealed end cap with 9mm Qi receiver coil and ferrite shield. Debug flex tail exits before seal.</p>
+        </div>
+      </div>
+
+      <div class="hardware__exploded reveal">
+        <img src="../docs/09-Assets/images/ai-renders/Gemini_Generated_Image_isb9s5isb9s5isb9.png" alt="Exploded isometric view of the 3D Pen showing all 12 components" loading="lazy">
+        <p class="hardware__caption">Exploded view: 12 components from nib cone to end cap</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Specifications -->
+  <section class="section section--alt" id="specs">
+    <div class="container">
+      <h2 class="section__title reveal">Specifications</h2>
+
+      <div class="stat-cards reveal">
+        <div class="stat-card">
+          <div class="stat-card__value">32<span class="stat-card__unit">kHz</span></div>
+          <div class="stat-card__label">Max IMU sample rate</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__value">8<span class="stat-card__unit">kHz</span></div>
+          <div class="stat-card__label">Wireless polling rate</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__value">&lt;10<span class="stat-card__unit">ms</span></div>
+          <div class="stat-card__label">ML inference latency</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__value">$156</div>
+          <div class="stat-card__label">Prototype BOM cost</div>
+        </div>
+      </div>
+
+      <div class="specs-table-wrapper reveal">
+        <table class="specs-table">
+          <thead>
+            <tr><th>Parameter</th><th>Value</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Dimensions</td><td>150mm L &times; 11.5mm D</td></tr>
+            <tr><td>Weight</td><td>20 &ndash; 28g (polycarbonate shell)</td></tr>
+            <tr><td>Refill</td><td>Standard gel pen (110mm &times; 6mm, Pilot G2 compatible)</td></tr>
+            <tr><td>MCU</td><td>nRF52840 &mdash; ARM Cortex-M4F, 256KB RAM, 1MB flash</td></tr>
+            <tr><td>IMU</td><td>2&times; TDK ICM-42688-P (6-axis, 32kHz max ODR)</td></tr>
+            <tr><td>Pressure Sensor</td><td>Interlink FSR 400 Short (0.3mm, 5.6mm active area)</td></tr>
+            <tr><td>Touch</td><td>Azoteq IQS263 capacitive slider + proximity</td></tr>
+            <tr><td>Wireless</td><td>Nordic ESB at 2Mbps (BLE secondary for config)</td></tr>
+            <tr><td>Data throughput</td><td>6ch &times; 8kHz &times; 16-bit = 768kbps</td></tr>
+            <tr><td>Battery</td><td>10180 Li-ion, 100mAh, 8&ndash;14+ hours active</td></tr>
+            <tr><td>Charging</td><td>Wireless (Qi-style) via cradle</td></tr>
+            <tr><td>PCB</td><td>2-layer flex polyimide, helical wrap, 230mm &times; 10mm</td></tr>
+            <tr><td>Firmware</td><td>Zephyr RTOS via nRF Connect SDK</td></tr>
+            <tr><td>Host inference</td><td>ONNX Runtime, &lt;10ms per window</td></tr>
+            <tr><td>HID</td><td>OS-level digitizer pen (Usage Page 0x0D)</td></tr>
+            <tr><td>OS Support</td><td>Windows, macOS, Linux</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="section" id="gallery">
+    <div class="container">
+      <h2 class="section__title reveal">Gallery</h2>
+      <p class="section__subtitle reveal">AI-generated concept renders and the original hand-drawn sketch.</p>
+
+      <div class="gallery reveal">
+        <div class="gallery__item" tabindex="0">
+          <img src="../docs/09-Assets/images/ai-renders/ChatGPT Image Feb 21, 2026, 01_06_18 PM.png" alt="ChatGPT concept render of the 3D Pen" loading="lazy">
+        </div>
+        <div class="gallery__item" tabindex="0">
+          <img src="../docs/09-Assets/images/ai-renders/Gemini_Generated_Image_4f43gf4f43gf4f43.png" alt="Translucent X-ray view" loading="lazy">
+        </div>
+        <div class="gallery__item" tabindex="0">
+          <img src="../docs/09-Assets/images/ai-renders/Gemini_Generated_Image_8lfxts8lfxts8lfx.png" alt="4-panel lifestyle views" loading="lazy">
+        </div>
+        <div class="gallery__item" tabindex="0">
+          <img src="../docs/09-Assets/images/ai-renders/Gemini_Generated_Image_isb9s5isb9s5isb9.png" alt="Exploded isometric view" loading="lazy">
+        </div>
+        <div class="gallery__item" tabindex="0">
+          <img src="../docs/09-Assets/images/ai-renders/Gemini_Generated_Image_svh0basvh0basvh0.png" alt="Exploded vertical dark view" loading="lazy">
+        </div>
+        <div class="gallery__item" tabindex="0">
+          <img src="../docs/09-Assets/images/ai-renders/Gemini_Generated_Image_uo0fd5uo0fd5uo0f.png" alt="Exploded angled light view" loading="lazy">
+        </div>
+        <div class="gallery__item" tabindex="0">
+          <img src="../docs/09-Assets/images/ai-renders/Gemini_Generated_Image_ydeg7wydeg7wydeg.png" alt="Exploded vertical warm view" loading="lazy">
+        </div>
+        <div class="gallery__item" tabindex="0">
+          <img src="../docs/09-Assets/images/pen-sketch-v0.jpg" alt="Original hand-drawn pen sketch" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Roadmap -->
+  <section class="section section--alt" id="roadmap">
+    <div class="container">
+      <h2 class="section__title reveal">Roadmap</h2>
+
+      <div class="timeline reveal">
+        <div class="timeline__item timeline__item--complete">
+          <div class="timeline__marker"></div>
+          <div class="timeline__content">
+            <div class="timeline__phase">Phase 1</div>
+            <h3>Research</h3>
+            <span class="timeline__status timeline__status--complete">Complete</span>
+            <ul>
+              <li>48+ documents across hardware, embedded, ML, and software domains</li>
+              <li>Component selection and feasibility analysis</li>
+              <li>Architecture design and requirements specification</li>
+              <li>AI concept renders and hardware design spec</li>
+            </ul>
+          </div>
+        </div>
+        <div class="timeline__item timeline__item--current">
+          <div class="timeline__marker"></div>
+          <div class="timeline__content">
+            <div class="timeline__phase">Phase 2</div>
+            <h3>Design</h3>
+            <span class="timeline__status timeline__status--current">In Progress</span>
+            <ul>
+              <li>Flex PCB schematic and layout in KiCad</li>
+              <li>Mechanical CAD for shell, nib, and inner structure</li>
+              <li>Firmware skeleton with Zephyr RTOS</li>
+              <li>ML model architecture and training pipeline setup</li>
+            </ul>
+          </div>
+        </div>
+        <div class="timeline__item">
+          <div class="timeline__marker"></div>
+          <div class="timeline__content">
+            <div class="timeline__phase">Phase 3</div>
+            <h3>Prototype</h3>
+            <span class="timeline__status">Upcoming</span>
+            <ul>
+              <li>Flex PCB fabrication and component assembly</li>
+              <li>CNC machined shell and inner parts</li>
+              <li>Firmware bring-up and sensor validation</li>
+              <li>First sensor data capture sessions</li>
+            </ul>
+          </div>
+        </div>
+        <div class="timeline__item">
+          <div class="timeline__marker"></div>
+          <div class="timeline__content">
+            <div class="timeline__phase">Phase 4</div>
+            <h3>Integration</h3>
+            <span class="timeline__status">Future</span>
+            <ul>
+              <li>ML model training on real sensor data</li>
+              <li>Host software with virtual HID driver</li>
+              <li>End-to-end: write on paper, see strokes digitally</li>
+              <li>Iterative refinement and second hardware revision</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Support -->
+  <section class="section" id="support">
+    <div class="container">
+      <h2 class="section__title reveal">Support the Project</h2>
+      <p class="section__subtitle reveal">This is an independent open-source hardware project. Your support funds components, PCB fabrication, and prototyping.</p>
+
+      <div class="tiers reveal">
+        <div class="tier">
+          <div class="tier__price">$3<span>/mo</span></div>
+          <h3 class="tier__name">Follower</h3>
+          <ul class="tier__perks">
+            <li>Project updates and progress posts</li>
+            <li>Behind-the-scenes design decisions</li>
+            <li>Discord community access</li>
+          </ul>
+          <a href="https://patreon.com/bunty9" class="btn btn--outline" target="_blank" rel="noopener">Join</a>
+        </div>
+        <div class="tier tier--featured">
+          <div class="tier__badge">Popular</div>
+          <div class="tier__price">$10<span>/mo</span></div>
+          <h3 class="tier__name">Supporter</h3>
+          <ul class="tier__perks">
+            <li>Everything in Follower</li>
+            <li>Early access to design files</li>
+            <li>Vote on feature priorities</li>
+            <li>Name in project credits</li>
+          </ul>
+          <a href="https://patreon.com/bunty9" class="btn btn--primary" target="_blank" rel="noopener">Join</a>
+        </div>
+        <div class="tier">
+          <div class="tier__price">$25<span>/mo</span></div>
+          <h3 class="tier__name">Builder</h3>
+          <ul class="tier__perks">
+            <li>Everything in Supporter</li>
+            <li>Access to raw CAD/KiCad files</li>
+            <li>Monthly video call updates</li>
+            <li>Priority input on hardware decisions</li>
+          </ul>
+          <a href="https://patreon.com/bunty9" class="btn btn--outline" target="_blank" rel="noopener">Join</a>
+        </div>
+        <div class="tier">
+          <div class="tier__price">$100<span>/mo</span></div>
+          <h3 class="tier__name">Sponsor</h3>
+          <ul class="tier__perks">
+            <li>Everything in Builder</li>
+            <li>Logo on project website and repo</li>
+            <li>First-run prototype unit (when available)</li>
+            <li>Direct collaboration channel</li>
+          </ul>
+          <a href="https://patreon.com/bunty9" class="btn btn--outline" target="_blank" rel="noopener">Join</a>
+        </div>
+      </div>
+
+      <div class="funding-goals reveal">
+        <h3>Funding Goals</h3>
+        <div class="goal">
+          <div class="goal__info">
+            <span class="goal__name">First PCB order</span>
+            <span class="goal__amount">$200</span>
+          </div>
+          <div class="goal__bar"><div class="goal__progress" style="width: 0%"></div></div>
+        </div>
+        <div class="goal">
+          <div class="goal__info">
+            <span class="goal__name">Full prototype build</span>
+            <span class="goal__amount">$500</span>
+          </div>
+          <div class="goal__bar"><div class="goal__progress" style="width: 0%"></div></div>
+        </div>
+        <div class="goal">
+          <div class="goal__info">
+            <span class="goal__name">Second revision + ML training hardware</span>
+            <span class="goal__amount">$2,000</span>
+          </div>
+          <div class="goal__bar"><div class="goal__progress" style="width: 0%"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GitHub CTA -->
+  <section class="cta-banner" id="github-cta">
+    <div class="container">
+      <div class="cta-banner__content reveal">
+        <h2>Fully Open Source</h2>
+        <p>Hardware designs, firmware, ML models, and host software &mdash; everything is open. Explore the 50+ document knowledge base, review the architecture, or contribute.</p>
+        <a href="https://github.com/bunty9/3d-pen" class="btn btn--primary btn--lg" target="_blank" rel="noopener">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          Explore the Repository
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>3D Pen &mdash; an open-source hardware project by <a href="https://github.com/bunty9" target="_blank" rel="noopener">bunty9</a></p>
+    </div>
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <button class="lightbox__close" aria-label="Close">&times;</button>
+    <button class="lightbox__prev" aria-label="Previous image">&lsaquo;</button>
+    <button class="lightbox__next" aria-label="Next image">&rsaquo;</button>
+    <div class="lightbox__content">
+      <img src="" alt="" class="lightbox__img" id="lightbox-img">
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
