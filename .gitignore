@@ -1,0 +1,51 @@
+# Obsidian workspace (user-specific)
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/hotkeys.json
+.obsidian/appearance.json
+
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
+*~
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+.venv/
+venv/
+env/
+
+# Environment / secrets
+.env
+.env.local
+.env.*.local
+*.key
+*.pem
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node (if any tooling)
+node_modules/
+npm-debug.log*
+
+# Build artifacts
+*.o
+*.elf
+*.hex
+*.bin
+*.map
+
+# Logs
+*.log
